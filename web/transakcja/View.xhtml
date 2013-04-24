@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTransakcjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTransakcjaLabel_transakcjaId}"/>
+                    <h:outputText value="#{transakcjaController.selected.transakcjaId}" title="#{bundle.ViewTransakcjaTitle_transakcjaId}"/>
+                    <h:outputText value="#{bundle.ViewTransakcjaLabel_kwota}"/>
+                    <h:outputText value="#{transakcjaController.selected.kwota}" title="#{bundle.ViewTransakcjaTitle_kwota}"/>
+                    <h:outputText value="#{bundle.ViewTransakcjaLabel_data}"/>
+                    <h:outputText value="#{transakcjaController.selected.data}" title="#{bundle.ViewTransakcjaTitle_data}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTransakcjaLabel_status}"/>
+                    <h:outputText value="#{transakcjaController.selected.status}" title="#{bundle.ViewTransakcjaTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewTransakcjaLabel_userIdFk}"/>
+                    <h:outputText value="#{transakcjaController.selected.userIdFk}" title="#{bundle.ViewTransakcjaTitle_userIdFk}"/>
+                    <h:outputText value="#{bundle.ViewTransakcjaLabel_klientIdFk}"/>
+                    <h:outputText value="#{transakcjaController.selected.klientIdFk}" title="#{bundle.ViewTransakcjaTitle_klientIdFk}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{transakcjaController.destroyAndView}" value="#{bundle.ViewTransakcjaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTransakcjaEditLink}"/>
+                <br />
+                <h:commandLink action="#{transakcjaController.prepareCreate}" value="#{bundle.ViewTransakcjaCreateLink}" />
+                <br />
+                <h:commandLink action="#{transakcjaController.prepareList}" value="#{bundle.ViewTransakcjaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTransakcjaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

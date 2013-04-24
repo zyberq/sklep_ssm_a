@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditZamowieniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditZamowieniaLabel_zamowieniaId}" for="zamowieniaId" />
+                    <h:inputText id="zamowieniaId" value="#{zamowieniaController.selected.zamowieniaId}" title="#{bundle.EditZamowieniaTitle_zamowieniaId}" required="true" requiredMessage="#{bundle.EditZamowieniaRequiredMessage_zamowieniaId}"/>
+                    <h:outputLabel value="#{bundle.EditZamowieniaLabel_zrealizowane}" for="zrealizowane" />
+                    <h:inputText id="zrealizowane" value="#{zamowieniaController.selected.zrealizowane}" title="#{bundle.EditZamowieniaTitle_zrealizowane}" />
+                    <h:outputLabel value="#{bundle.EditZamowieniaLabel_dataZamowienia}" for="dataZamowienia" />
+                    <h:inputText id="dataZamowienia" value="#{zamowieniaController.selected.dataZamowienia}" title="#{bundle.EditZamowieniaTitle_dataZamowienia}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditZamowieniaLabel_dataRealizacji}" for="dataRealizacji" />
+                    <h:inputText id="dataRealizacji" value="#{zamowieniaController.selected.dataRealizacji}" title="#{bundle.EditZamowieniaTitle_dataRealizacji}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditZamowieniaLabel_dostawcaIdFk}" for="dostawcaIdFk" />
+                    <h:selectOneMenu id="dostawcaIdFk" value="#{zamowieniaController.selected.dostawcaIdFk}" title="#{bundle.EditZamowieniaTitle_dostawcaIdFk}" >
+                        <f:selectItems value="#{dostawcyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditZamowieniaLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{zamowieniaController.selected.userIdFk}" title="#{bundle.EditZamowieniaTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{zamowieniaController.update}" value="#{bundle.EditZamowieniaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditZamowieniaViewLink}"/>
+                <br />
+                <h:commandLink action="#{zamowieniaController.prepareList}" value="#{bundle.EditZamowieniaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditZamowieniaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

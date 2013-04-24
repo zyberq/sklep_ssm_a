@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDostawcyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDostawcyEmpty}" rendered="#{dostawcyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dostawcyController.items.rowCount > 0}">
+                    <h:outputText value="#{dostawcyController.pagination.pageFirstItem + 1}..#{dostawcyController.pagination.pageLastItem + 1}/#{dostawcyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dostawcyController.previous}" value="#{bundle.Previous} #{dostawcyController.pagination.pageSize}" rendered="#{dostawcyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dostawcyController.next}" value="#{bundle.Next} #{dostawcyController.pagination.pageSize}" rendered="#{dostawcyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{dostawcyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_dostawcyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dostawcyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_nazwaWlasna}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwaWlasna}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_telefon}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefon}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_osobaKont}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.osobaKont}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_daneFirmyIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.daneFirmyIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDostawcyTitle_userIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dostawcyController.prepareView}" value="#{bundle.ListDostawcyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dostawcyController.prepareEdit}" value="#{bundle.ListDostawcyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dostawcyController.destroy}" value="#{bundle.ListDostawcyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dostawcyController.prepareCreate}" value="#{bundle.ListDostawcyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDostawcyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

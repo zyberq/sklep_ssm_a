@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFakturyHasProduktyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFakturyHasProduktyLabel_userIdFk}"/>
+                    <h:outputText value="#{fakturyHasProduktyController.selected.userIdFk}" title="#{bundle.ViewFakturyHasProduktyTitle_userIdFk}"/>
+                    <h:outputText value="#{bundle.ViewFakturyHasProduktyLabel_produkty}"/>
+                    <h:outputText value="#{fakturyHasProduktyController.selected.produkty}" title="#{bundle.ViewFakturyHasProduktyTitle_produkty}"/>
+                    <h:outputText value="#{bundle.ViewFakturyHasProduktyLabel_faktury}"/>
+                    <h:outputText value="#{fakturyHasProduktyController.selected.faktury}" title="#{bundle.ViewFakturyHasProduktyTitle_faktury}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fakturyHasProduktyController.destroyAndView}" value="#{bundle.ViewFakturyHasProduktyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFakturyHasProduktyEditLink}"/>
+                <br />
+                <h:commandLink action="#{fakturyHasProduktyController.prepareCreate}" value="#{bundle.ViewFakturyHasProduktyCreateLink}" />
+                <br />
+                <h:commandLink action="#{fakturyHasProduktyController.prepareList}" value="#{bundle.ViewFakturyHasProduktyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFakturyHasProduktyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProduktyHasZamowieniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProduktyHasZamowieniaLabel_ilosc}" for="ilosc" />
+                    <h:inputText id="ilosc" value="#{produktyHasZamowieniaController.selected.ilosc}" title="#{bundle.CreateProduktyHasZamowieniaTitle_ilosc}" />
+                    <h:outputLabel value="#{bundle.CreateProduktyHasZamowieniaLabel_iloscZrealizowana}" for="iloscZrealizowana" />
+                    <h:inputText id="iloscZrealizowana" value="#{produktyHasZamowieniaController.selected.iloscZrealizowana}" title="#{bundle.CreateProduktyHasZamowieniaTitle_iloscZrealizowana}" />
+                    <h:outputLabel value="#{bundle.CreateProduktyHasZamowieniaLabel_zrealizowanoProdukt}" for="zrealizowanoProdukt" />
+                    <h:inputText id="zrealizowanoProdukt" value="#{produktyHasZamowieniaController.selected.zrealizowanoProdukt}" title="#{bundle.CreateProduktyHasZamowieniaTitle_zrealizowanoProdukt}" />
+                    <h:outputLabel value="#{bundle.CreateProduktyHasZamowieniaLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{produktyHasZamowieniaController.selected.userIdFk}" title="#{bundle.CreateProduktyHasZamowieniaTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProduktyHasZamowieniaLabel_zamowienia}" for="zamowienia" />
+                    <h:selectOneMenu id="zamowienia" value="#{produktyHasZamowieniaController.selected.zamowienia}" title="#{bundle.CreateProduktyHasZamowieniaTitle_zamowienia}" required="true" requiredMessage="#{bundle.CreateProduktyHasZamowieniaRequiredMessage_zamowienia}">
+                        <f:selectItems value="#{zamowieniaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProduktyHasZamowieniaLabel_produkty}" for="produkty" />
+                    <h:selectOneMenu id="produkty" value="#{produktyHasZamowieniaController.selected.produkty}" title="#{bundle.CreateProduktyHasZamowieniaTitle_produkty}" required="true" requiredMessage="#{bundle.CreateProduktyHasZamowieniaRequiredMessage_produkty}">
+                        <f:selectItems value="#{produktyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{produktyHasZamowieniaController.create}" value="#{bundle.CreateProduktyHasZamowieniaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{produktyHasZamowieniaController.prepareList}" value="#{bundle.CreateProduktyHasZamowieniaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProduktyHasZamowieniaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

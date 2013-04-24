@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProduktyHasZamowieniaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProduktyHasZamowieniaLabel_ilosc}"/>
+                    <h:outputText value="#{produktyHasZamowieniaController.selected.ilosc}" title="#{bundle.ViewProduktyHasZamowieniaTitle_ilosc}"/>
+                    <h:outputText value="#{bundle.ViewProduktyHasZamowieniaLabel_iloscZrealizowana}"/>
+                    <h:outputText value="#{produktyHasZamowieniaController.selected.iloscZrealizowana}" title="#{bundle.ViewProduktyHasZamowieniaTitle_iloscZrealizowana}"/>
+                    <h:outputText value="#{bundle.ViewProduktyHasZamowieniaLabel_zrealizowanoProdukt}"/>
+                    <h:outputText value="#{produktyHasZamowieniaController.selected.zrealizowanoProdukt}" title="#{bundle.ViewProduktyHasZamowieniaTitle_zrealizowanoProdukt}"/>
+                    <h:outputText value="#{bundle.ViewProduktyHasZamowieniaLabel_userIdFk}"/>
+                    <h:outputText value="#{produktyHasZamowieniaController.selected.userIdFk}" title="#{bundle.ViewProduktyHasZamowieniaTitle_userIdFk}"/>
+                    <h:outputText value="#{bundle.ViewProduktyHasZamowieniaLabel_zamowienia}"/>
+                    <h:outputText value="#{produktyHasZamowieniaController.selected.zamowienia}" title="#{bundle.ViewProduktyHasZamowieniaTitle_zamowienia}"/>
+                    <h:outputText value="#{bundle.ViewProduktyHasZamowieniaLabel_produkty}"/>
+                    <h:outputText value="#{produktyHasZamowieniaController.selected.produkty}" title="#{bundle.ViewProduktyHasZamowieniaTitle_produkty}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{produktyHasZamowieniaController.destroyAndView}" value="#{bundle.ViewProduktyHasZamowieniaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProduktyHasZamowieniaEditLink}"/>
+                <br />
+                <h:commandLink action="#{produktyHasZamowieniaController.prepareCreate}" value="#{bundle.ViewProduktyHasZamowieniaCreateLink}" />
+                <br />
+                <h:commandLink action="#{produktyHasZamowieniaController.prepareList}" value="#{bundle.ViewProduktyHasZamowieniaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProduktyHasZamowieniaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

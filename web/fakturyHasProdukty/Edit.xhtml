@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFakturyHasProduktyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFakturyHasProduktyLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{fakturyHasProduktyController.selected.userIdFk}" title="#{bundle.EditFakturyHasProduktyTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFakturyHasProduktyLabel_produkty}" for="produkty" />
+                    <h:selectOneMenu id="produkty" value="#{fakturyHasProduktyController.selected.produkty}" title="#{bundle.EditFakturyHasProduktyTitle_produkty}" required="true" requiredMessage="#{bundle.EditFakturyHasProduktyRequiredMessage_produkty}">
+                        <f:selectItems value="#{produktyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFakturyHasProduktyLabel_faktury}" for="faktury" />
+                    <h:selectOneMenu id="faktury" value="#{fakturyHasProduktyController.selected.faktury}" title="#{bundle.EditFakturyHasProduktyTitle_faktury}" required="true" requiredMessage="#{bundle.EditFakturyHasProduktyRequiredMessage_faktury}">
+                        <f:selectItems value="#{fakturyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{fakturyHasProduktyController.update}" value="#{bundle.EditFakturyHasProduktySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFakturyHasProduktyViewLink}"/>
+                <br />
+                <h:commandLink action="#{fakturyHasProduktyController.prepareList}" value="#{bundle.EditFakturyHasProduktyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFakturyHasProduktyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

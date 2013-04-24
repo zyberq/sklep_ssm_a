@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProduktyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProduktyEmpty}" rendered="#{produktyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{produktyController.items.rowCount > 0}">
+                    <h:outputText value="#{produktyController.pagination.pageFirstItem + 1}..#{produktyController.pagination.pageLastItem + 1}/#{produktyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{produktyController.previous}" value="#{bundle.Previous} #{produktyController.pagination.pageSize}" rendered="#{produktyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{produktyController.next}" value="#{bundle.Next} #{produktyController.pagination.pageSize}" rendered="#{produktyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{produktyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_produktyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.produktyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_kategorieIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kategorieIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_nazwa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_cena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cena}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_vat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vat}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_rabatKwotowy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rabatKwotowy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_rabatProcentowy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rabatProcentowy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_kodProduktu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kodProduktu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_regalIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.regalIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_dostawcaIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dostawcaIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProduktyTitle_userIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{produktyController.prepareView}" value="#{bundle.ListProduktyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{produktyController.prepareEdit}" value="#{bundle.ListProduktyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{produktyController.destroy}" value="#{bundle.ListProduktyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{produktyController.prepareCreate}" value="#{bundle.ListProduktyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProduktyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

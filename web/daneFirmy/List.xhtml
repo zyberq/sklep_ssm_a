@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDaneFirmyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDaneFirmyEmpty}" rendered="#{daneFirmyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{daneFirmyController.items.rowCount > 0}">
+                    <h:outputText value="#{daneFirmyController.pagination.pageFirstItem + 1}..#{daneFirmyController.pagination.pageLastItem + 1}/#{daneFirmyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{daneFirmyController.previous}" value="#{bundle.Previous} #{daneFirmyController.pagination.pageSize}" rendered="#{daneFirmyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{daneFirmyController.next}" value="#{bundle.Next} #{daneFirmyController.pagination.pageSize}" rendered="#{daneFirmyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{daneFirmyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_daneFirmyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.daneFirmyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_nazwaFirmy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwaFirmy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_nip}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nip}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_regon}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.regon}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_bank}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bank}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_nrkonta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nrkonta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_miasto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.miasto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_ulica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ulica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_numerDomu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numerDomu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_kodPocztowy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kodPocztowy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDaneFirmyTitle_userIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{daneFirmyController.prepareView}" value="#{bundle.ListDaneFirmyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{daneFirmyController.prepareEdit}" value="#{bundle.ListDaneFirmyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{daneFirmyController.destroy}" value="#{bundle.ListDaneFirmyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{daneFirmyController.prepareCreate}" value="#{bundle.ListDaneFirmyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDaneFirmyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

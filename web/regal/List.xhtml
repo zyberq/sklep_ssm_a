@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRegalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRegalEmpty}" rendered="#{regalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{regalController.items.rowCount > 0}">
+                    <h:outputText value="#{regalController.pagination.pageFirstItem + 1}..#{regalController.pagination.pageLastItem + 1}/#{regalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{regalController.previous}" value="#{bundle.Previous} #{regalController.pagination.pageSize}" rendered="#{regalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{regalController.next}" value="#{bundle.Next} #{regalController.pagination.pageSize}" rendered="#{regalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{regalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegalTitle_regalId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.regalId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegalTitle_nazwa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegalTitle_miejsce}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.miejsce}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegalTitle_ilosc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ilosc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegalTitle_userIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{regalController.prepareView}" value="#{bundle.ListRegalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{regalController.prepareEdit}" value="#{bundle.ListRegalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{regalController.destroy}" value="#{bundle.ListRegalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{regalController.prepareCreate}" value="#{bundle.ListRegalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRegalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

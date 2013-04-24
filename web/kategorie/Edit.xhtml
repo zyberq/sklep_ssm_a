@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditKategorieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditKategorieLabel_kategorieId}" for="kategorieId" />
+                    <h:inputText id="kategorieId" value="#{kategorieController.selected.kategorieId}" title="#{bundle.EditKategorieTitle_kategorieId}" required="true" requiredMessage="#{bundle.EditKategorieRequiredMessage_kategorieId}"/>
+                    <h:outputLabel value="#{bundle.EditKategorieLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{kategorieController.selected.nazwa}" title="#{bundle.EditKategorieTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.EditKategorieLabel_fkKategorieId}" for="fkKategorieId" />
+                    <h:selectOneMenu id="fkKategorieId" value="#{kategorieController.selected.fkKategorieId}" title="#{bundle.EditKategorieTitle_fkKategorieId}" >
+                        <f:selectItems value="#{kategorieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditKategorieLabel_fkUserId}" for="fkUserId" />
+                    <h:selectOneMenu id="fkUserId" value="#{kategorieController.selected.fkUserId}" title="#{bundle.EditKategorieTitle_fkUserId}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{kategorieController.update}" value="#{bundle.EditKategorieSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditKategorieViewLink}"/>
+                <br />
+                <h:commandLink action="#{kategorieController.prepareList}" value="#{bundle.EditKategorieShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditKategorieIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

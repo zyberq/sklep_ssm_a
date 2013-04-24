@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFakturyHasProduktyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFakturyHasProduktyEmpty}" rendered="#{fakturyHasProduktyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{fakturyHasProduktyController.items.rowCount > 0}">
+                    <h:outputText value="#{fakturyHasProduktyController.pagination.pageFirstItem + 1}..#{fakturyHasProduktyController.pagination.pageLastItem + 1}/#{fakturyHasProduktyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{fakturyHasProduktyController.previous}" value="#{bundle.Previous} #{fakturyHasProduktyController.pagination.pageSize}" rendered="#{fakturyHasProduktyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{fakturyHasProduktyController.next}" value="#{bundle.Next} #{fakturyHasProduktyController.pagination.pageSize}" rendered="#{fakturyHasProduktyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{fakturyHasProduktyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyHasProduktyTitle_userIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyHasProduktyTitle_produkty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.produkty}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyHasProduktyTitle_faktury}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.faktury}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{fakturyHasProduktyController.prepareView}" value="#{bundle.ListFakturyHasProduktyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fakturyHasProduktyController.prepareEdit}" value="#{bundle.ListFakturyHasProduktyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fakturyHasProduktyController.destroy}" value="#{bundle.ListFakturyHasProduktyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{fakturyHasProduktyController.prepareCreate}" value="#{bundle.ListFakturyHasProduktyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFakturyHasProduktyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

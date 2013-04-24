@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProduktyHasKategorieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProduktyHasKategorieLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{produktyHasKategorieController.selected.userIdFk}" title="#{bundle.CreateProduktyHasKategorieTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProduktyHasKategorieLabel_kategorie}" for="kategorie" />
+                    <h:selectOneMenu id="kategorie" value="#{produktyHasKategorieController.selected.kategorie}" title="#{bundle.CreateProduktyHasKategorieTitle_kategorie}" required="true" requiredMessage="#{bundle.CreateProduktyHasKategorieRequiredMessage_kategorie}">
+                        <f:selectItems value="#{kategorieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProduktyHasKategorieLabel_produkty}" for="produkty" />
+                    <h:selectOneMenu id="produkty" value="#{produktyHasKategorieController.selected.produkty}" title="#{bundle.CreateProduktyHasKategorieTitle_produkty}" required="true" requiredMessage="#{bundle.CreateProduktyHasKategorieRequiredMessage_produkty}">
+                        <f:selectItems value="#{produktyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{produktyHasKategorieController.create}" value="#{bundle.CreateProduktyHasKategorieSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{produktyHasKategorieController.prepareList}" value="#{bundle.CreateProduktyHasKategorieShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProduktyHasKategorieIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

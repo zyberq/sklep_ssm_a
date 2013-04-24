@@ -1,0 +1,19 @@
+@import url(../reindeer/styles.css);
+
+.v-app {
+	background: #ffffa0;
+}
+
+.v-panel, v-panel-content, .v-panel-content > div {
+    background: #ffffd0;
+}
+
+v-panel-caption {
+	margin: 3px;
+	padding: 3px;
+}
+
+/*
+.v-verticallayout {
+    background: #ffffd0;
+}*/

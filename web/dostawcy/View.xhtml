@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDostawcyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_dostawcyId}"/>
+                    <h:outputText value="#{dostawcyController.selected.dostawcyId}" title="#{bundle.ViewDostawcyTitle_dostawcyId}"/>
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_nazwaWlasna}"/>
+                    <h:outputText value="#{dostawcyController.selected.nazwaWlasna}" title="#{bundle.ViewDostawcyTitle_nazwaWlasna}"/>
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_telefon}"/>
+                    <h:outputText value="#{dostawcyController.selected.telefon}" title="#{bundle.ViewDostawcyTitle_telefon}"/>
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_email}"/>
+                    <h:outputText value="#{dostawcyController.selected.email}" title="#{bundle.ViewDostawcyTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_osobaKont}"/>
+                    <h:outputText value="#{dostawcyController.selected.osobaKont}" title="#{bundle.ViewDostawcyTitle_osobaKont}"/>
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_daneFirmyIdFk}"/>
+                    <h:outputText value="#{dostawcyController.selected.daneFirmyIdFk}" title="#{bundle.ViewDostawcyTitle_daneFirmyIdFk}"/>
+                    <h:outputText value="#{bundle.ViewDostawcyLabel_userIdFk}"/>
+                    <h:outputText value="#{dostawcyController.selected.userIdFk}" title="#{bundle.ViewDostawcyTitle_userIdFk}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dostawcyController.destroyAndView}" value="#{bundle.ViewDostawcyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDostawcyEditLink}"/>
+                <br />
+                <h:commandLink action="#{dostawcyController.prepareCreate}" value="#{bundle.ViewDostawcyCreateLink}" />
+                <br />
+                <h:commandLink action="#{dostawcyController.prepareList}" value="#{bundle.ViewDostawcyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDostawcyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDostawcyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_dostawcyId}" for="dostawcyId" />
+                    <h:inputText id="dostawcyId" value="#{dostawcyController.selected.dostawcyId}" title="#{bundle.CreateDostawcyTitle_dostawcyId}" required="true" requiredMessage="#{bundle.CreateDostawcyRequiredMessage_dostawcyId}"/>
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_nazwaWlasna}" for="nazwaWlasna" />
+                    <h:inputText id="nazwaWlasna" value="#{dostawcyController.selected.nazwaWlasna}" title="#{bundle.CreateDostawcyTitle_nazwaWlasna}" />
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_telefon}" for="telefon" />
+                    <h:inputText id="telefon" value="#{dostawcyController.selected.telefon}" title="#{bundle.CreateDostawcyTitle_telefon}" />
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{dostawcyController.selected.email}" title="#{bundle.CreateDostawcyTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_osobaKont}" for="osobaKont" />
+                    <h:inputText id="osobaKont" value="#{dostawcyController.selected.osobaKont}" title="#{bundle.CreateDostawcyTitle_osobaKont}" />
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_daneFirmyIdFk}" for="daneFirmyIdFk" />
+                    <h:selectOneMenu id="daneFirmyIdFk" value="#{dostawcyController.selected.daneFirmyIdFk}" title="#{bundle.CreateDostawcyTitle_daneFirmyIdFk}" >
+                        <f:selectItems value="#{daneFirmyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDostawcyLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{dostawcyController.selected.userIdFk}" title="#{bundle.CreateDostawcyTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dostawcyController.create}" value="#{bundle.CreateDostawcySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{dostawcyController.prepareList}" value="#{bundle.CreateDostawcyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDostawcyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

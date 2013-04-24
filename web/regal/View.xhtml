@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRegalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRegalLabel_regalId}"/>
+                    <h:outputText value="#{regalController.selected.regalId}" title="#{bundle.ViewRegalTitle_regalId}"/>
+                    <h:outputText value="#{bundle.ViewRegalLabel_nazwa}"/>
+                    <h:outputText value="#{regalController.selected.nazwa}" title="#{bundle.ViewRegalTitle_nazwa}"/>
+                    <h:outputText value="#{bundle.ViewRegalLabel_miejsce}"/>
+                    <h:outputText value="#{regalController.selected.miejsce}" title="#{bundle.ViewRegalTitle_miejsce}"/>
+                    <h:outputText value="#{bundle.ViewRegalLabel_ilosc}"/>
+                    <h:outputText value="#{regalController.selected.ilosc}" title="#{bundle.ViewRegalTitle_ilosc}"/>
+                    <h:outputText value="#{bundle.ViewRegalLabel_userIdFk}"/>
+                    <h:outputText value="#{regalController.selected.userIdFk}" title="#{bundle.ViewRegalTitle_userIdFk}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{regalController.destroyAndView}" value="#{bundle.ViewRegalDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRegalEditLink}"/>
+                <br />
+                <h:commandLink action="#{regalController.prepareCreate}" value="#{bundle.ViewRegalCreateLink}" />
+                <br />
+                <h:commandLink action="#{regalController.prepareList}" value="#{bundle.ViewRegalShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRegalIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

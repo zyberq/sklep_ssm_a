@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProduktyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProduktyLabel_produktyId}"/>
+                    <h:outputText value="#{produktyController.selected.produktyId}" title="#{bundle.ViewProduktyTitle_produktyId}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_kategorieIdFk}"/>
+                    <h:outputText value="#{produktyController.selected.kategorieIdFk}" title="#{bundle.ViewProduktyTitle_kategorieIdFk}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_nazwa}"/>
+                    <h:outputText value="#{produktyController.selected.nazwa}" title="#{bundle.ViewProduktyTitle_nazwa}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_cena}"/>
+                    <h:outputText value="#{produktyController.selected.cena}" title="#{bundle.ViewProduktyTitle_cena}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_vat}"/>
+                    <h:outputText value="#{produktyController.selected.vat}" title="#{bundle.ViewProduktyTitle_vat}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_rabatKwotowy}"/>
+                    <h:outputText value="#{produktyController.selected.rabatKwotowy}" title="#{bundle.ViewProduktyTitle_rabatKwotowy}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_rabatProcentowy}"/>
+                    <h:outputText value="#{produktyController.selected.rabatProcentowy}" title="#{bundle.ViewProduktyTitle_rabatProcentowy}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_kodProduktu}"/>
+                    <h:outputText value="#{produktyController.selected.kodProduktu}" title="#{bundle.ViewProduktyTitle_kodProduktu}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_regalIdFk}"/>
+                    <h:outputText value="#{produktyController.selected.regalIdFk}" title="#{bundle.ViewProduktyTitle_regalIdFk}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_dostawcaIdFk}"/>
+                    <h:outputText value="#{produktyController.selected.dostawcaIdFk}" title="#{bundle.ViewProduktyTitle_dostawcaIdFk}"/>
+                    <h:outputText value="#{bundle.ViewProduktyLabel_userIdFk}"/>
+                    <h:outputText value="#{produktyController.selected.userIdFk}" title="#{bundle.ViewProduktyTitle_userIdFk}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{produktyController.destroyAndView}" value="#{bundle.ViewProduktyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProduktyEditLink}"/>
+                <br />
+                <h:commandLink action="#{produktyController.prepareCreate}" value="#{bundle.ViewProduktyCreateLink}" />
+                <br />
+                <h:commandLink action="#{produktyController.prepareList}" value="#{bundle.ViewProduktyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProduktyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFakturyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFakturyEmpty}" rendered="#{fakturyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{fakturyController.items.rowCount > 0}">
+                    <h:outputText value="#{fakturyController.pagination.pageFirstItem + 1}..#{fakturyController.pagination.pageLastItem + 1}/#{fakturyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{fakturyController.previous}" value="#{bundle.Previous} #{fakturyController.pagination.pageSize}" rendered="#{fakturyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{fakturyController.next}" value="#{bundle.Next} #{fakturyController.pagination.pageSize}" rendered="#{fakturyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{fakturyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_fakturyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fakturyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_numerRach}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numerRach}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_dataFakt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataFakt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_typ}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typ}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_suma}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suma}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_zaplacone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.zaplacone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_pozostaloDoZaplaty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pozostaloDoZaplaty}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_transakcjaIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.transakcjaIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_komu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.komu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_kto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFakturyTitle_userIdFk}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userIdFk}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{fakturyController.prepareView}" value="#{bundle.ListFakturyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fakturyController.prepareEdit}" value="#{bundle.ListFakturyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fakturyController.destroy}" value="#{bundle.ListFakturyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{fakturyController.prepareCreate}" value="#{bundle.ListFakturyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFakturyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

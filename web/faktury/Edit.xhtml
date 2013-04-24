@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFakturyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_fakturyId}" for="fakturyId" />
+                    <h:inputText id="fakturyId" value="#{fakturyController.selected.fakturyId}" title="#{bundle.EditFakturyTitle_fakturyId}" required="true" requiredMessage="#{bundle.EditFakturyRequiredMessage_fakturyId}"/>
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_numerRach}" for="numerRach" />
+                    <h:inputText id="numerRach" value="#{fakturyController.selected.numerRach}" title="#{bundle.EditFakturyTitle_numerRach}" />
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_dataFakt}" for="dataFakt" />
+                    <h:inputText id="dataFakt" value="#{fakturyController.selected.dataFakt}" title="#{bundle.EditFakturyTitle_dataFakt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{fakturyController.selected.typ}" title="#{bundle.EditFakturyTitle_typ}" />
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_suma}" for="suma" />
+                    <h:inputText id="suma" value="#{fakturyController.selected.suma}" title="#{bundle.EditFakturyTitle_suma}" />
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_zaplacone}" for="zaplacone" />
+                    <h:inputText id="zaplacone" value="#{fakturyController.selected.zaplacone}" title="#{bundle.EditFakturyTitle_zaplacone}" />
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_pozostaloDoZaplaty}" for="pozostaloDoZaplaty" />
+                    <h:inputText id="pozostaloDoZaplaty" value="#{fakturyController.selected.pozostaloDoZaplaty}" title="#{bundle.EditFakturyTitle_pozostaloDoZaplaty}" />
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_transakcjaIdFk}" for="transakcjaIdFk" />
+                    <h:selectOneMenu id="transakcjaIdFk" value="#{fakturyController.selected.transakcjaIdFk}" title="#{bundle.EditFakturyTitle_transakcjaIdFk}" >
+                        <f:selectItems value="#{transakcjaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_komu}" for="komu" />
+                    <h:selectOneMenu id="komu" value="#{fakturyController.selected.komu}" title="#{bundle.EditFakturyTitle_komu}" >
+                        <f:selectItems value="#{daneFirmyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_kto}" for="kto" />
+                    <h:selectOneMenu id="kto" value="#{fakturyController.selected.kto}" title="#{bundle.EditFakturyTitle_kto}" >
+                        <f:selectItems value="#{daneFirmyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFakturyLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{fakturyController.selected.userIdFk}" title="#{bundle.EditFakturyTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{fakturyController.update}" value="#{bundle.EditFakturySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFakturyViewLink}"/>
+                <br />
+                <h:commandLink action="#{fakturyController.prepareList}" value="#{bundle.EditFakturyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFakturyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

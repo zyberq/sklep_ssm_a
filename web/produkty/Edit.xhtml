@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProduktyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_produktyId}" for="produktyId" />
+                    <h:inputText id="produktyId" value="#{produktyController.selected.produktyId}" title="#{bundle.EditProduktyTitle_produktyId}" required="true" requiredMessage="#{bundle.EditProduktyRequiredMessage_produktyId}"/>
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_kategorieIdFk}" for="kategorieIdFk" />
+                    <h:inputText id="kategorieIdFk" value="#{produktyController.selected.kategorieIdFk}" title="#{bundle.EditProduktyTitle_kategorieIdFk}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{produktyController.selected.nazwa}" title="#{bundle.EditProduktyTitle_nazwa}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_cena}" for="cena" />
+                    <h:inputText id="cena" value="#{produktyController.selected.cena}" title="#{bundle.EditProduktyTitle_cena}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_vat}" for="vat" />
+                    <h:inputText id="vat" value="#{produktyController.selected.vat}" title="#{bundle.EditProduktyTitle_vat}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_rabatKwotowy}" for="rabatKwotowy" />
+                    <h:inputText id="rabatKwotowy" value="#{produktyController.selected.rabatKwotowy}" title="#{bundle.EditProduktyTitle_rabatKwotowy}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_rabatProcentowy}" for="rabatProcentowy" />
+                    <h:inputText id="rabatProcentowy" value="#{produktyController.selected.rabatProcentowy}" title="#{bundle.EditProduktyTitle_rabatProcentowy}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_kodProduktu}" for="kodProduktu" />
+                    <h:inputText id="kodProduktu" value="#{produktyController.selected.kodProduktu}" title="#{bundle.EditProduktyTitle_kodProduktu}" />
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_regalIdFk}" for="regalIdFk" />
+                    <h:selectOneMenu id="regalIdFk" value="#{produktyController.selected.regalIdFk}" title="#{bundle.EditProduktyTitle_regalIdFk}" >
+                        <f:selectItems value="#{regalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_dostawcaIdFk}" for="dostawcaIdFk" />
+                    <h:selectOneMenu id="dostawcaIdFk" value="#{produktyController.selected.dostawcaIdFk}" title="#{bundle.EditProduktyTitle_dostawcaIdFk}" >
+                        <f:selectItems value="#{dostawcyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProduktyLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{produktyController.selected.userIdFk}" title="#{bundle.EditProduktyTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{produktyController.update}" value="#{bundle.EditProduktySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProduktyViewLink}"/>
+                <br />
+                <h:commandLink action="#{produktyController.prepareList}" value="#{bundle.EditProduktyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProduktyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

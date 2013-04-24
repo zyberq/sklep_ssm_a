@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditKlientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditKlientLabel_klientId}" for="klientId" />
+                    <h:inputText id="klientId" value="#{klientController.selected.klientId}" title="#{bundle.EditKlientTitle_klientId}" required="true" requiredMessage="#{bundle.EditKlientRequiredMessage_klientId}"/>
+                    <h:outputLabel value="#{bundle.EditKlientLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{klientController.selected.imie}" title="#{bundle.EditKlientTitle_imie}" />
+                    <h:outputLabel value="#{bundle.EditKlientLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{klientController.selected.nazwisko}" title="#{bundle.EditKlientTitle_nazwisko}" />
+                    <h:outputLabel value="#{bundle.EditKlientLabel_rabat}" for="rabat" />
+                    <h:inputText id="rabat" value="#{klientController.selected.rabat}" title="#{bundle.EditKlientTitle_rabat}" />
+                    <h:outputLabel value="#{bundle.EditKlientLabel_iloscPunktow}" for="iloscPunktow" />
+                    <h:inputText id="iloscPunktow" value="#{klientController.selected.iloscPunktow}" title="#{bundle.EditKlientTitle_iloscPunktow}" />
+                    <h:outputLabel value="#{bundle.EditKlientLabel_adresIdFk}" for="adresIdFk" />
+                    <h:inputText id="adresIdFk" value="#{klientController.selected.adresIdFk}" title="#{bundle.EditKlientTitle_adresIdFk}" />
+                    <h:outputLabel value="#{bundle.EditKlientLabel_daneFirmyIdFk}" for="daneFirmyIdFk" />
+                    <h:selectOneMenu id="daneFirmyIdFk" value="#{klientController.selected.daneFirmyIdFk}" title="#{bundle.EditKlientTitle_daneFirmyIdFk}" >
+                        <f:selectItems value="#{daneFirmyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditKlientLabel_userIdFk}" for="userIdFk" />
+                    <h:selectOneMenu id="userIdFk" value="#{klientController.selected.userIdFk}" title="#{bundle.EditKlientTitle_userIdFk}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{klientController.update}" value="#{bundle.EditKlientSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditKlientViewLink}"/>
+                <br />
+                <h:commandLink action="#{klientController.prepareList}" value="#{bundle.EditKlientShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditKlientIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

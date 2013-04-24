@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDaneFirmyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_daneFirmyId}"/>
+                    <h:outputText value="#{daneFirmyController.selected.daneFirmyId}" title="#{bundle.ViewDaneFirmyTitle_daneFirmyId}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_nazwaFirmy}"/>
+                    <h:outputText value="#{daneFirmyController.selected.nazwaFirmy}" title="#{bundle.ViewDaneFirmyTitle_nazwaFirmy}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_nip}"/>
+                    <h:outputText value="#{daneFirmyController.selected.nip}" title="#{bundle.ViewDaneFirmyTitle_nip}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_regon}"/>
+                    <h:outputText value="#{daneFirmyController.selected.regon}" title="#{bundle.ViewDaneFirmyTitle_regon}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_bank}"/>
+                    <h:outputText value="#{daneFirmyController.selected.bank}" title="#{bundle.ViewDaneFirmyTitle_bank}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_nrkonta}"/>
+                    <h:outputText value="#{daneFirmyController.selected.nrkonta}" title="#{bundle.ViewDaneFirmyTitle_nrkonta}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_status}"/>
+                    <h:outputText value="#{daneFirmyController.selected.status}" title="#{bundle.ViewDaneFirmyTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_miasto}"/>
+                    <h:outputText value="#{daneFirmyController.selected.miasto}" title="#{bundle.ViewDaneFirmyTitle_miasto}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_ulica}"/>
+                    <h:outputText value="#{daneFirmyController.selected.ulica}" title="#{bundle.ViewDaneFirmyTitle_ulica}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_numerDomu}"/>
+                    <h:outputText value="#{daneFirmyController.selected.numerDomu}" title="#{bundle.ViewDaneFirmyTitle_numerDomu}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_kodPocztowy}"/>
+                    <h:outputText value="#{daneFirmyController.selected.kodPocztowy}" title="#{bundle.ViewDaneFirmyTitle_kodPocztowy}"/>
+                    <h:outputText value="#{bundle.ViewDaneFirmyLabel_userIdFk}"/>
+                    <h:outputText value="#{daneFirmyController.selected.userIdFk}" title="#{bundle.ViewDaneFirmyTitle_userIdFk}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{daneFirmyController.destroyAndView}" value="#{bundle.ViewDaneFirmyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDaneFirmyEditLink}"/>
+                <br />
+                <h:commandLink action="#{daneFirmyController.prepareCreate}" value="#{bundle.ViewDaneFirmyCreateLink}" />
+                <br />
+                <h:commandLink action="#{daneFirmyController.prepareList}" value="#{bundle.ViewDaneFirmyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDaneFirmyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
