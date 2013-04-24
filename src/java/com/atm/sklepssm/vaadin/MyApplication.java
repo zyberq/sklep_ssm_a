@@ -68,8 +68,8 @@ public class MyApplication  extends Application implements HttpServletRequestLis
     
     @Override
     public void init() {
-        setTheme("gasdiary");
-        
+       // setTheme("gasdiary");
+        setTheme("runo");
         createDemoDataIfEmptyDatabase();
 
         // Initialize the view manager for the main window
