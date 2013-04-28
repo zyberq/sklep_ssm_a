@@ -42,7 +42,7 @@ public class MyApplicationMessages extends ListResourceBundle implements Seriali
     public static final String InvalidEmail = generateId();
     
     // UserView
-    public static final String MyCars = generateId();
+    public static final String Kategorie = generateId();
     public static final String EditCar = generateId();
     public static final String NewCar = generateId();
     public static final String DeleteCar = generateId();

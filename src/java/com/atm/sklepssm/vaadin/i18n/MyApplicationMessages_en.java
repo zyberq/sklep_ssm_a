@@ -44,7 +44,7 @@ public class MyApplicationMessages_en extends MyApplicationMessages {
         {InvalidEmail, "Invalid email address"},
         
         // UserView
-        {MyCars, "My Cars"},
+        {Kategorie, "My Cars"},
         {NewCar, "New Car..."},
         {EditCar, "Edit Car..."},
         {DeleteCar, "Delete Car"},

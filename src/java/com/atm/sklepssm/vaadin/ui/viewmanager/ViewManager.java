@@ -4,7 +4,6 @@ package com.atm.sklepssm.vaadin.ui.viewmanager;
  *
  * @author Maciej_Paszkowski
  */
-import com.atm.sklepssm.vaadin.ui.login.LoginScreen;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Stack;
@@ -68,7 +67,5 @@ public class ViewManager implements Serializable {
         return window;
     }
 
-    public void switchScreen(String name, LoginScreen loginScreen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 } 
