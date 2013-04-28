@@ -22,6 +22,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window.Notification;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -153,7 +154,7 @@ public class LoginScreen extends VerticalLayout implements LoginListener {
              getWindow().showNotification("New User", Notification.TYPE_WARNING_MESSAGE);
              */
 
-            logger.warning("User not found: " + username);
+            logger.log(Level.WARNING, "User not found: {0}", username);
             showInvalidPassword();
             return;
         } else {
@@ -163,7 +164,7 @@ public class LoginScreen extends VerticalLayout implements LoginListener {
             if (existing.getPassword().equals(password)) {
                 app.setAppUser(existing);
             } else {
-                logger.warning("Invalid password for user " + username + ": " + password);
+                logger.log(Level.WARNING, "Invalid password for user {0}: {1}", new Object[]{username, password});
                 showInvalidPassword();
                 return;
             }
