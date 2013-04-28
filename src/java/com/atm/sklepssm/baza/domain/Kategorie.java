@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Kategorie.findByKategorieId", query = "SELECT k FROM Kategorie k WHERE k.kategorieId = :kategorieId"),
     @NamedQuery(name = "Kategorie.findByNazwa", query = "SELECT k FROM Kategorie k WHERE k.nazwa = :nazwa")})
 public class Kategorie implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -136,5 +137,8 @@ public class Kategorie implements Serializable {
     public String toString() {
         return "com.atm.sklepssm.baza.Kategorie[ kategorieId=" + kategorieId + " ]";
     }
-    
+
+    public boolean isSuperKategorie() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

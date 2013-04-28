@@ -59,6 +59,7 @@ public class LoginScreen extends VerticalLayout implements LoginListener {
 
             private static final long serialVersionUID = 7382925259045032373L;
 
+            @Override
             public void buttonClick(Button.ClickEvent event) {
                 // Switch the application locale
                 if (app.getLocale().getLanguage().equals("pl")) {
@@ -134,7 +135,7 @@ public class LoginScreen extends VerticalLayout implements LoginListener {
         EntityManager em = JPAContainerFactory.createEntityManagerForPersistenceUnit(MyApplication.PERSISTENCEUNIT);
 
         // Try to find the user
-        Query q = em.createQuery("SELECT u FROM User u WHERE u.username = '" + username + "'");
+        Query q = em.createQuery("SELECT u FROM User u WHERE u.login = '" + username + "'");
         @SuppressWarnings("unchecked")
         List<User> users = q.getResultList();
         if (users.size() != 1) {

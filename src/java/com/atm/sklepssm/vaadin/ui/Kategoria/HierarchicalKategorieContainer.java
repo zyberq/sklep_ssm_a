@@ -22,7 +22,7 @@ public class HierarchicalKategorieContainer extends JPAContainer<Kategorie> {
                 Kategorie.class,
                 JPAContainerFactory
                         .createEntityManagerForPersistenceUnit(MyApplication.PERSISTENCEUNIT)));
-        setParentProperty("parent");
+        setParentProperty("fkKategorieId");
     }
 
   //  @Override
