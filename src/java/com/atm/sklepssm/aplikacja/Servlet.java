@@ -17,13 +17,20 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class Servlet extends AbstractApplicationServlet {
     
+    private Providers pro;
+    
     @EJB
     private DaneFirmyEntityProvider daf;
+    @EJB
     private DostawcyEntityProvider dos;
     
+   
     @Override
     protected Application getNewApplication(HttpServletRequest request) throws ServletException {
-        return new MyApplication(daf,dos);
+        pro=new Providers();
+        pro.setDaneFirmyProvider(daf);
+        
+        return new MyApplication(pro);
     }
 
     @Override

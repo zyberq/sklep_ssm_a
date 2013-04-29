@@ -22,26 +22,19 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.vaadin.Application;
-import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.addon.jpacontainer.provider.CachingMutableLocalEntityProvider;
-import com.vaadin.addon.jpacontainer.provider.jndijta.JndiAddresses;
 import com.vaadin.terminal.gwt.server.HttpServletRequestListener;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.Window;
 import java.util.logging.Level;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
-import com.atm.sklepssm.aplikacja.DaneFirmyEntityProvider;
-import com.atm.sklepssm.aplikacja.DostawcyEntityProvider;
+import com.atm.sklepssm.aplikacja.Providers;
 
 public class MyApplication extends Application implements HttpServletRequestListener {
 
@@ -74,7 +67,9 @@ public class MyApplication extends Application implements HttpServletRequestList
         instance.set(this);
     }
 
-    public MyApplication(DaneFirmyEntityProvider daf, DostawcyEntityProvider dos) {
+  
+
+    public MyApplication(Providers pro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
