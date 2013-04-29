@@ -40,6 +40,8 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import com.atm.sklepssm.aplikacja.DaneFirmyEntityProvider;
+import com.atm.sklepssm.aplikacja.DostawcyEntityProvider;
 
 public class MyApplication extends Application implements HttpServletRequestListener {
 
@@ -70,6 +72,10 @@ public class MyApplication extends Application implements HttpServletRequestList
 
     public MyApplication() {
         instance.set(this);
+    }
+
+    public MyApplication(DaneFirmyEntityProvider daf, DostawcyEntityProvider dos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
