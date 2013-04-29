@@ -49,7 +49,9 @@ public class Kategorie implements Serializable {
     private Collection<ProduktyHasKategorie> produktyHasKategorieCollection;
     @OneToMany(mappedBy = "fkKategorieId")
     private Collection<Kategorie> kategorieCollection;
-    @JoinColumn(name = "fk_kategorie_id", referencedColumnName = "kategorie_id")
+    
+    //duza zmiana !!!! bedzie musal byc zaktualizowany skrypt bazydanych !!!
+    @JoinColumn(name = "fk_kategorie_id")
     @ManyToOne
     private Kategorie fkKategorieId;
     @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id")
