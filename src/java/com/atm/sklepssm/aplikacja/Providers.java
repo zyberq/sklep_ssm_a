@@ -24,6 +24,7 @@ public class Providers {
     private EjbEntityProvider userProvider;
     private EjbEntityProvider zamowieniaProvider;
 
+    
     public EjbEntityProvider getDaneFirmyProvider() {
         return daneFirmyProvider;
     }
